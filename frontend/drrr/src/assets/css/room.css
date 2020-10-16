@@ -1,0 +1,240 @@
+.gg{
+    background-color:#DB82A2;
+}
+.gg:before{
+    background-color:#DB82A2;
+}
+
+.kanra{
+    background-color:#f2a532;
+}
+.kanra:before{
+    background-color:#f2a532;
+}
+
+.setton{
+    background-color: #7b6f76;
+}
+.setton:before{
+    background-color: #7b6f76;
+}
+
+.tanaka{
+    background-color: #91c0ed;
+}
+.tanaka:before{
+    background-color: #91c0ed;
+}
+
+.zaika{
+    background-color: #942121;
+}
+.zaika:before{
+    background-color: #942121;
+}
+
+.zawa{
+    background-color: #5c7a55 ;
+}
+.zawa:before{
+    background-color: #5c7a55 ;
+}
+
+
+.room-header{
+    background-color: #fff;
+    height: 11rem;
+}
+
+.header-form{
+    width: 40rem;
+    margin:0 auto;
+}
+
+.message{
+    margin:0 auto;
+    width: 28rem;
+}
+
+.message-content{
+    margin-top: 1.5rem;
+    width: 28rem;
+    height:4rem;
+    border-radius: 1rem;
+    border:0.2rem solid rgba(0, 0, 0, 0.644);
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.219);
+    font-weight: 700;
+    font-family: 'Microsoft Yahei';
+    resize: none;
+    padding:0.2rem;
+    overflow: hidden;
+}
+
+
+.message-post-btn{
+    background-color: #fffffffd;
+    background-image:-webkit-gradient(linear, left bottom, left top, color-stop(0.61, #e0e0e0), color-stop(0.65, #eeeeeefd), color-stop(0.83, #fffffffd));
+    color: rgba(0, 0, 0, 0.644);
+    border:0.2rem solid rgba(0, 0, 0, 0.644);
+    font-size: 1.3rem;
+    font-weight: 700;
+    width: 14rem;
+    height: 2.2rem;
+    text-align: center;
+    border-radius: 1rem;
+    font-family: 'Microsoft Yahei';
+    margin:0.7rem auto 0;
+    display: block;
+}
+
+
+.chat-log{
+    width:70%;
+    margin: 0 auto;
+    font-family: 'Microsoft Yahei';
+    font-size: 1rem;
+    font-weight: 600;
+    color:white;
+}
+
+.chat-log ul{
+    list-style: none;
+}
+
+.chat-item{
+    display: inline-block;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.chat-user{
+    float: left;
+    width: 10rem;
+}
+
+.chat-user img{
+    display: block;
+    margin: 0 auto;
+}
+.chat-user div{
+    text-align: center;
+}
+
+.chat-content{
+    max-width: 70%;
+    /* background-color: #DE8FAC; */
+    padding: 1rem;
+    margin-left: 5rem;
+    float: left;
+    min-height: 2rem;
+    border : 0.3rem solid #ebe9e9;
+    border-radius: 1rem;
+    position: relative;
+}
+.chat-content:before{
+    content: '';
+    display:block;
+    position: absolute;
+    left:-0.77rem;
+    top:0.3rem;
+    width:1rem;
+    height:1rem;
+    border:0.3rem solid #ebe9e9;
+    border-width:0.3rem 0 0 0.3rem;
+    /* background-color:#DE8FAC; */
+    -webkit-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
+    /* -webkit-transform:rotate(-45deg);
+    -ms-transform:rotate(-45deg);
+    -o-transform:rotate(-45deg); */
+    transform:rotate(-39deg);
+}
+
+.system-message span{
+    margin-left: 3rem;
+}
+
+
+
+@media (max-width:570px) {
+    .header-form{
+        width: 90%;
+    }
+
+    .message{
+        width: 70%;
+    }
+
+    .message-content{
+        width: 95%;
+    }
+    
+    .chat-log{
+        width:90%;
+        margin: 0 auto;
+        font-family: 'Microsoft Yahei';
+        font-size: 1rem;
+        font-weight: 600;
+        color:white;
+    }
+    
+    .chat-log ul{
+        list-style: none;
+        padding:0;
+    }
+    
+    .chat-item{
+        margin-bottom: 1rem;
+    }
+    
+    .chat-user{
+        float: left;
+        width: 5rem;
+    }
+    
+    .chat-user img{
+        display: block;
+        margin: 0 auto;
+    }
+    .chat-user div{
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+    
+    .chat-content{
+        max-width: 10rem;
+        /* background-color: #DE8FAC; */
+        padding: 1rem;
+        margin-left: 1rem;
+        float: left;
+        border : 0.3rem solid #ebe9e9;
+        border-radius: 1rem;
+        position: relative;
+    }
+    
+    .chat-content:before{
+        content: '';
+        display:block;
+        position: absolute;
+        left:-0.7rem;
+        top:0.3rem;
+        width:1rem;
+        height:1rem;
+        border:0.3rem solid #ebe9e9;
+        border-width:0.3rem 0 0 0.3rem;
+        /* background-color:#DE8FAC; */
+        -webkit-box-sizing:content-box;
+        -moz-box-sizing:content-box;
+        box-sizing:content-box;
+        /* -webkit-transform:rotate(-45deg);
+        -ms-transform:rotate(-45deg);
+        -o-transform:rotate(-45deg); */
+        transform:rotate(-39deg);
+    }
+
+    .system-message span{
+        margin-left: 0rem;
+    }
+}

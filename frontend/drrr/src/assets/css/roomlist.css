@@ -1,0 +1,144 @@
+.userinfo-nav{
+    width: 40rem;
+    height: 7rem;
+    margin: 3rem auto;
+    border: 0.2rem solid rgba(255, 255, 255, 0.438);
+    border-radius: 1rem;
+}
+.nav-item{
+    float: left;
+}
+.avatar{
+    margin:1rem auto auto 3rem;
+}
+
+.username{
+    color:white;
+    margin-top:0rem;
+    margin: 2rem 2rem;
+    font-family: 'Microsoft Yahei';
+    font-size: 1rem;
+}
+
+.exit-btn{
+    color: white;
+    font-family: 'Microsoft Yahei';
+    font-size: 0.75rem;
+    float: right;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: #af0000;
+    height: 0.9rem;
+    line-height: 0.9rem;
+    border: 0.1rem solid #af0000;
+    border-radius: 0.18rem;
+}
+.list-title{
+    width: 10rem;
+    margin:0 auto;
+    text-align: center;
+}
+
+.list-title span{
+    color:white;
+    font-family: 'Microsoft Yahei';
+}
+
+.room-list-info{
+    width: 40rem;
+    margin: 1.5rem auto;
+}
+
+.online-num{
+    color:white;
+    font-size: 1rem;
+    font-family: 'Microsoft Yahei';
+    font-weight: 500;
+}
+
+.create-btn{
+    background-color: black;
+    color: white;;
+    border:0.18rem solid white;
+    font-size: 0.9rem;
+    font-weight: 700;
+    float: right;
+    width: 10rem;
+    height: 2.2rem;
+    text-align: center;
+    border-radius: 1rem;
+    font-family: 'Microsoft Yahei';
+}
+
+.room-item{
+    color:white;
+    font-size:1rem;
+    font-family: 'Microsoft Yahei';
+    list-style: none;
+    width: 40rem;
+    max-width: 90%;
+    margin: 3rem auto;
+    padding: 0;
+}
+
+.room-item li span{
+    height: 3rem;
+    margin-top:1rem;
+    display: inline-block;
+}
+
+.room-enter{
+    margin-top:1rem;
+}
+
+.room-title{
+    width: 30%;
+}
+.room-host{
+    width: 20%;
+}
+.room-online-num{
+    width: 10%;
+}
+
+@media (max-width:570px) {
+    .userinfo-nav{
+        width: 80%;
+    }
+    .userinfo-nav img{
+        width: 80%;
+    }
+    .avatar{
+        margin:1.5rem auto auto 1.5rem;
+    }
+    .username {
+        width: 40%;
+        margin:2.5rem 1rem;
+    }
+    .room-list-info{
+        width: 90%;
+    }
+    .room-item{
+        width: 90%;
+        font-size: 0.7rem;
+    }
+    .room-item li span{
+        margin-right: 1rem;
+        line-height: 1.5rem;
+    }
+
+
+    .create-btn{
+        background-color: black;
+        color: white;
+        border:0.18rem solid white;
+        font-size: 0.5rem;
+        font-weight: 500;
+        float: right;
+        width: 5rem;
+        height: 1.8rem;
+        text-align: center;
+        border-radius: 1rem;
+        font-family: 'Microsoft Yahei';
+    }
+}
