@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from drrr.models import users, room
 import json
 from django.db import connection
+from drrr.repositories.UserRepository import UserRepository
 
 
 @csrf_exempt
@@ -15,10 +16,11 @@ def login(request):
             'nickname': params['nickname'],
             'avatar': params['avatar']
         }
-        res = users.create(**insert_data)
+        user = UserRepository.store(insert_data=insert_data)
+        # res = users.create(**insert_data)
     except TypeError as e:
         return JsonResponse({'status': 'FAIL', 'message': str(e)})
-    return JsonResponse({'status': 'SUCCESS', 'uuid': res.uuid})
+    return JsonResponse({'status': 'SUCCESS', 'uuid': user.uuid})
 
 
 @csrf_exempt
@@ -48,3 +50,14 @@ def query_set_to_dict(cursor):
         dict(zip(columns, row))
         for row in cursor.fetchall()
     ]
+
+
+def test(request):
+    params = {
+        'id': 1,
+    }
+
+    # user = UserRepository.find(params=params, multiple=False)
+    res = UserRepository.delete(params=params)
+    print(res)
+    return JsonResponse({'a': 'a'})
