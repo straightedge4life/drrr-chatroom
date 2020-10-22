@@ -79,6 +79,3 @@ class UserRepository:
         cls.update(params=params, update_data={'deleted_at': datetime.datetime.now()})
 
 
-
-
-
