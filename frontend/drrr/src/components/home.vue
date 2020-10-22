@@ -1,10 +1,6 @@
 <template>
     <div class="container">
-        <span>
-            Here is Home Page
-        </span>
-        <br>
-        <button v-on:click="go_to_login()">跳转</button>
+        
     </div>
 </template>
 
@@ -20,10 +16,11 @@ export default {
            
         }
     },
+    created(){
+        this.$router.push('/login')
+    },
     methods:{
-        go_to_login(){
-            this.$router.push('/login')
-        }
+      
     }
 }
 
