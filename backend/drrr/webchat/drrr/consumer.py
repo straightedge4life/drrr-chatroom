@@ -45,6 +45,9 @@ class MyConsumer(WebsocketConsumer):
             elif text_data_json['type'] == 'exit_user':
                 self.exit_user()
 
+            elif text_data_json['type'] == 'get_online_user':
+                self.update_online_user()
+
         except Exception as e:
             print(e.with_traceback())
             err_info = {
@@ -76,6 +79,7 @@ class MyConsumer(WebsocketConsumer):
                 self.send_room_notify(user.join_room_id, user.nickname+' offline.')
                 self.channel_group_exit(user.join_room_id)
 
+            # 只退房 不删用户 因为可能刷新后回来
             UserRepository.update(params=params, update_data={'join_room_id': 0})
 
         except Exception as e:
@@ -101,6 +105,9 @@ class MyConsumer(WebsocketConsumer):
 
         # 加入到公共频道
         self.channel_group_join(0)
+
+        # 往公共频道推送最新人数
+        self.update_online_user()
 
     def room_create(self, data: dict):
         """
@@ -168,7 +175,7 @@ class MyConsumer(WebsocketConsumer):
         self.channel_group_join(room_id=room_info.id)
 
         # 向公共频道发送信息
-        self.send_sys_msg('room_list')
+        self.send_sys_msg(message='room_list')
 
         # 向房间发送入房提醒
         self.send_room_notify(room_id=room_info.id, content=user.nickname + " has joined this room.")
@@ -191,10 +198,14 @@ class MyConsumer(WebsocketConsumer):
         RoomRepository.member_check(room_id=user.join_room_id)
 
         # 向公共频道发送信息
-        self.send_sys_msg('room_list')
+        self.send_sys_msg(message='room_list')
 
         # 向房间发送入房提醒
         self.send_room_notify(room_id=user.join_room_id, content=user.nickname + " has left this room.")
+
+    def update_online_user(self):
+        num = UserRepository.count(params={})
+        self.send_sys_msg(message='online_user', data=num)
 
     def send_room_message(self, data: dict):
         """
@@ -231,11 +242,11 @@ class MyConsumer(WebsocketConsumer):
             },
         )
 
-    def send_sys_msg(self, message: str):
+    def send_sys_msg(self, message: str, data: str = ''):
         """
         发送系统消息
         :param message:
-        :param msg_type:
+        :param data:
         :return:
         """
         async_to_sync(self.channel_layer.group_send)(
@@ -244,7 +255,8 @@ class MyConsumer(WebsocketConsumer):
                 "type": "send.message",
                 "text": {
                     'type': 'system',
-                    'content': message
+                    'content': message,
+                    'data': data
                 },
             },
         )
@@ -269,9 +281,10 @@ class MyConsumer(WebsocketConsumer):
         if user.join_room_id:
             self.channel_group_exit(user.join_room_id)
             RoomRepository.member_check(room_id=user.join_room_id)
-            self.send_sys_msg('room_list')
+            self.send_sys_msg(message='room_list')
 
         # 删除用户
-        # users.objects.filter(uuid=user.uuid).update(deleted_at=datetime.datetime.now())
         UserRepository.delete(params={'uuid': user.uuid})
 
+        # 往公共频道推送最新人数
+        self.update_online_user()

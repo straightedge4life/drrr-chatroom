@@ -40,7 +40,7 @@ class RoomRepository:
             return None
         params['deleted_at'] = None
 
-        return room.objects.filter(**params).update(update_data)
+        return room.objects.filter(**params).update(**update_data)
 
     @classmethod
     def delete(cls, params: dict):

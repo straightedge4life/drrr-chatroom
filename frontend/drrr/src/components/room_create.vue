@@ -4,7 +4,7 @@
             ROOM CREATION
         </div>
         <div class="room-max-num">
-            <input type="text" name="room-name" class="room-title" v-model.trim="room_name">
+            <input type="text" name="room-name" class="room-create-title" v-model.trim="room_name">
             <select name="room-num" class="room-num" v-model.trim="room_max_member ">
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -41,7 +41,7 @@
     margin: 1rem auto;
 }
 
-.room-title{
+.room-create-title{
     width:15rem;
     font-size:1.2rem;
     border-radius: 0.3rem;
