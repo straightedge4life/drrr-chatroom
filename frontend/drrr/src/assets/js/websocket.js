@@ -1,5 +1,5 @@
 
-let instance = new WebSocket('ws://localhost:8000/chat');
+let instance = new WebSocket('ws://localhost:8828/chat');
 
 export default instance
 
