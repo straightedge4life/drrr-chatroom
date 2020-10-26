@@ -1,3 +1,7 @@
 .idea/
 .vscode/
 *__pycache__/
+backend/drrr/Include/
+backend/drrr/Lib/
+backend/drrr/Scripts/
+backend/drrr/tcl/
