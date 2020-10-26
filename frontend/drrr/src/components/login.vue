@@ -104,7 +104,7 @@ export default {
             let that = this
             axios({
                 method:'POST',
-                url:'http://localhost:8000/login',
+                url:'http://localhost:8828/login',
                 data:{
                     nickname:this.nickname,
                     avatar:this.selected_avatar_id
