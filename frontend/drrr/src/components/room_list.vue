@@ -14,7 +14,7 @@
         </div>
 
         <div class="room-list-info">
-            <span class="online-num">Online: (<span>3</span>)</span>
+            <span class="online-num">Online: (<span>{{ online_user }}</span>)</span>
             <input type="submit" class="create-btn" value="CREATE ROOM" v-on:click="go_to('/room/create')">
         </div>
 
@@ -56,9 +56,8 @@ export default {
                 5:'zaika',
                 6:'zawa'
             },
-            room_list:[
-                
-            ]
+            room_list:[],
+            online_user:0
         }
     },
     created() {
@@ -74,6 +73,7 @@ export default {
             if(ws.readyState == 1){
                 that.bind_user(ws,that.uuid);
                 ws.onmessage = that.onmessage;
+                that.get_online_user(ws)
                 window.clearInterval(t)
             }
         },100);
@@ -99,7 +99,16 @@ export default {
                 console.log('recev msg');
                 console.log(data);
                 if(data.type == 'system'){
-                    this.get_room_list()
+                   switch(data.content){
+                       case 'room_list':
+                           this.get_room_list();
+                           break;
+                        case 'online_user':
+                            this.online_user = data.data
+                            break;
+                        default:
+                            // do nothing by now...
+                   }
                 }
         },
         go_to:function(uri){
@@ -122,6 +131,9 @@ export default {
                     // 异常处理
                 }
             })
+        },
+        get_online_user(ws){
+            ws.send(JSON.stringify({type:'get_online_user'}));
         },
         exit:function(){
             ws.send(JSON.stringify({type:'exit_user'}));

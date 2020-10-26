@@ -64,7 +64,6 @@ export default {
         }
     },
     created() {
-        // window.addEventListener('beforeunload', e => this.beforeUnload(e));
 
         // 未登陆
         if(this.uuid == undefined){
@@ -83,33 +82,11 @@ export default {
         },100);
         
         console.log(ws);
-        // ws.onopen = function(){
-        //     console.log('onopen');
-        //     that.bind_user(ws, that.uuid);
-        //     that.join_room(ws, that.uuid, that.room_id);
-        //     ws.onmessage = that.onmessage;
-        // };
-        // if(this.ws == undefined || this.ws.readyState != this.ws.OPEN){
-        //     console.log('刷新重连');
-        //     let ws_con = new WebSocket('ws://localhost:8000/test');
-        //     ws_con.onopen = function(){
-        //         that.ws = ws_con;
-        //         that.bind_user(that.ws, that.uuid);
-        //         that.join_room(that.ws, that.uuid, that.room_id)
-        //         that.ws.onmessage = that.onmessage;
-        //     };
-        // }else{
-        //     //this.bind_user(this.ws, this.uuid);
-        //     this.join_room(this.ws, this.uuid, this.room_id)
-        //     this.ws.onmessage = this.onmessage;
-        // }
+      
 
      
     },
     mounted:function(){},
-    destroyed(){
-        // window.removeEventListener('beforeunload', e => this.beforeUnload(e));
-    },
     methods:{
         join_room:function(ws, uuid, room_id){
             ws.send(JSON.stringify({type:'join', uuid:uuid, room_id:room_id}))

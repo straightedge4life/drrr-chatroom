@@ -17,7 +17,6 @@ def login(request):
             'avatar': params['avatar']
         }
         user = UserRepository.store(insert_data=insert_data)
-        # res = users.create(**insert_data)
     except TypeError as e:
         return JsonResponse({'status': 'FAIL', 'message': str(e)})
     return JsonResponse({'status': 'SUCCESS', 'uuid': user.uuid})
@@ -40,7 +39,6 @@ def room_list(request):
         cursor.execute(raw_sql)
 
         ret_data = query_set_to_dict(cursor)
-    # ret_data = json.loads(serializers.serialize('json', room.objects.raw(raw_sql)))
     return JsonResponse({'status': 'SUCCESS', 'data': ret_data})
 
 
@@ -51,13 +49,3 @@ def query_set_to_dict(cursor):
         for row in cursor.fetchall()
     ]
 
-
-def test(request):
-    params = {
-        'id': 1,
-    }
-
-    # user = UserRepository.find(params=params, multiple=False)
-    res = UserRepository.delete(params=params)
-    print(res)
-    return JsonResponse({'a': 'a'})

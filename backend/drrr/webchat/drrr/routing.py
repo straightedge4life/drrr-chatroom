@@ -12,6 +12,6 @@ application = ProtocolTypeRouter({
     #     ])
     # ),
     'websocket': URLRouter([
-            url(r'^test$', consumer.MyConsumer)
+            url(r'^chat$', consumer.MyConsumer)
         ])
 })
