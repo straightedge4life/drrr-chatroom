@@ -27,7 +27,7 @@ SECRET_KEY = '^ga1m8eg15#aw#=h&)j-l10fhsq*u973t#_@*_57hhbf*prfzj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = Config.get_config(name='ALLOWED_HOSTS', default=[])
 
 
 # Application definition
