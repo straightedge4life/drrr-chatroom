@@ -5,3 +5,4 @@ backend/drrr/Include/
 backend/drrr/Lib/
 backend/drrr/Scripts/
 backend/drrr/tcl/
+backend/drrr/webchat/webchat/config.py

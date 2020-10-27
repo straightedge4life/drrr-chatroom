@@ -118,7 +118,7 @@ export default {
             let that = this;
              axios({
                 method:'POST',
-                url:'http://localhost:8828/room_list',
+                url:this.api_host + this.api_list.room_list,
                 data:{
                     uuid:this.uuid,
                 }
