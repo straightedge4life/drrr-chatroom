@@ -60,6 +60,7 @@ import ws from '../assets/js/websocket'
 export default {
     data(){
         return {
+            login_api:1,
             tips_is_close:1,
             tips_title:'ERROR',
             tips_message:'Unknow error,please refresh your browser.',
@@ -104,7 +105,7 @@ export default {
             let that = this
             axios({
                 method:'POST',
-                url:'http://localhost:8828/login',
+                url:this.api_host + this.api_list.login,
                 data:{
                     nickname:this.nickname,
                     avatar:this.selected_avatar_id

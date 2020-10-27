@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from .config import Config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,16 +86,16 @@ WSGI_APPLICATION = 'webchat.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'drrr',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'POST': '3306',
-    }
-}
+DATABASES = Config.get_config(name='DATABASES', default={
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'forge',
+            'USER': 'root',
+            'PASSWORD': '',
+            'HOST': 'localhost',
+            'POST': '3306',
+        }
+    })
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -141,20 +143,22 @@ ASGI_APPLICATION = "drrr.routing.application"
 #     }
 # }
 
-CHANNEL_LAYERS = {
+
+CHANNEL_LAYERS = Config.get_config(name='CHANNEL_LAYERS', default={
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
             "hosts": [('127.0.0.1', 6379)],
         },
     },
-}
+})
 
-# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = Config.get_config(name='CORS_ALLOW_ALL_ORIGINS', default=True)
 
-CORS_ORIGIN_WHITELIST = (
-    'http://127.0.0.1',
-    'https://127.0.0.1',
-    'http://localhost',
-    'https://localhost',
-)
+# CORS_ORIGIN_WHITELIST = (
+#     'http://127.0.0.1',
+#     'https://127.0.0.1',
+#     'http://localhost',
+#     'https://localhost',
+# )
+
