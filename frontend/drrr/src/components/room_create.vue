@@ -20,7 +20,18 @@
         <div class="room-creation creation-submit">
             <input type="submit" value="CREATE" class="creation-submit-btn" v-on:click="room_create()">
         </div>
+
+        <div class="mask" v-bind:class="{ 'display-none':tips_is_close }"></div>
+        <div class="tips" v-bind:class="{ 'display-none':tips_is_close }">
+            <div class="title">{{ tips_title}}</div>
+            <div class="message">{{ tips_message }}</div>
+            <div class="oper">
+                <div class="button confirm" v-on:click="tips_close()">OK</div>
+            </div>
+        </div>
+        
     </div>
+    
 </template>
 
 <style>
@@ -78,14 +89,19 @@
     }
 }
 
+@import url('../assets/css/tips.css');
 
 </style>
+
 <script>
 import ws from '../assets/js/websocket'
 
 export default {
     data(){
         return {
+            tips_is_close:1,
+            tips_title:'ERROR',
+            tips_message:'Unknow error,please refresh your browser.',
             uuid:localStorage.getItem('uuid'),
             room_name:'',
             room_max_member:2
@@ -107,28 +123,12 @@ export default {
                 window.clearInterval(t)
             }
         },100);
-        
-        // this.bind_user(ws, this.uuid);
-        // ws.onmessage = this.onmessage;
-
-        // if(this.ws == undefined || this.ws.readyState != this.ws.OPEN){
-        //     console.log('刷新重连');
-        //     let ws_con = new WebSocket('ws://localhost:8000/test');
-        //     ws_con.onopen = function(){
-        //         that.ws = ws_con;
-        //         that.bind_user(that.ws, that.uuid);
-        //         that.ws.onmessage = that.onmessage;
-        //     }
-        // }else{
-        //     //this.bind_user(this.ws, this.uuid);
-        //     this.ws.onmessage = this.onmessage;
-        // }
     },
     mounted:function(){},
-    destroyed(){
-        // window.removeEventListener('beforeunload', e => this.beforeUnload(e));
-    },
     methods:{
+        tips_close:function(){
+            this.tips_is_close = 1;
+        },
         bind_user:function(ws, uuid){
             ws.send(JSON.stringify({type:'bind', uuid:uuid}));
         },
@@ -138,6 +138,12 @@ export default {
             if(data.type == 'room_create' && data.status == 'success'){
                 this.go_to('/room/' + data.room_id);
             }
+
+            if(data.type == 'error'){
+                this.tips_is_close = 0;
+                this.tips_message = data.message;
+            }
+            
         },
         go_to:function(uri){
             this.$router.push(uri)

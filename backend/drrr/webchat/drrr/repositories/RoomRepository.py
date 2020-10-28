@@ -1,5 +1,6 @@
 from drrr.models import room
 import datetime
+from django.utils import timezone
 from .UserRepository import UserRepository
 
 
@@ -50,7 +51,7 @@ class RoomRepository:
         :return:
         """
         params['deleted_at'] = None
-        return cls.update(params=params, update_data={'deleted_at': datetime.datetime.now()})
+        return cls.update(params=params, update_data={'deleted_at': timezone.now()})
 
     @classmethod
     def member_check(cls, room_id: int):

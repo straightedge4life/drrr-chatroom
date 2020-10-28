@@ -3,6 +3,7 @@ import json
 from asgiref.sync import async_to_sync
 from drrr.repositories.UserRepository import UserRepository
 from drrr.repositories.RoomRepository import RoomRepository
+from redis import client
 
 
 class MyConsumer(WebsocketConsumer):
@@ -49,7 +50,6 @@ class MyConsumer(WebsocketConsumer):
                 self.update_online_user()
 
         except Exception as e:
-            print(e.with_traceback())
             err_info = {
                 'type': 'error',
                 'message': str(e)
