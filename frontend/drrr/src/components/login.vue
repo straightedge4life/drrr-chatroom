@@ -123,7 +123,10 @@ export default {
                     that.tips_is_close = 0;
                     
                 }
+            }).catch(function(error){
+                
             })
+            
         }
     }
 }

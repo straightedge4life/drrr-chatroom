@@ -1,5 +1,5 @@
 from drrr.models import users
-import datetime
+from django.utils import timezone
 
 
 class UserRepository:
@@ -76,6 +76,6 @@ class UserRepository:
         :param params:
         :return:
         """
-        cls.update(params=params, update_data={'deleted_at': datetime.datetime.now()})
+        cls.update(params=params, update_data={'deleted_at': timezone.now()})
 
 
