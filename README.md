@@ -30,7 +30,7 @@ cp config.py.example config.py
   
 5.启动后端
 ```shell script
-python manage.py runserver 127.0.0.1:8818
+python manage.py runserver 127.0.0.1:8828
 ```
 6.Nginx配置  
 假设：  
@@ -62,7 +62,7 @@ map $http_upgrade $connection_upgrade {
 
 
 server {
-    listen       8828;
+    listen       8880;
     server_name www.my-drrr-chatroom.com;
     index       index.html index.html index.php;
     charset     utf-8;
@@ -73,7 +73,7 @@ server {
 
     location /{
         proxy_redirect off;
-        proxy_pass http://127.0.0.1:8818;
+        proxy_pass http://127.0.0.1:8828;
         proxy_read_timeout 300s;
         proxy_send_timeout 300s;
         #proxy_set_header Host $host;

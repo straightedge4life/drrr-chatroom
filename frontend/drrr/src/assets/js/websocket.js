@@ -1,5 +1,5 @@
 let host = window.location.host.split(':');
-let ws_port = ':8828';
+let ws_port = ':8880';
 let ws_path = '/chat';
 let ws_protocol = 'ws://';
 if(host.length > 1){
