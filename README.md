@@ -2,7 +2,8 @@
 ---
 这是一个学习Python框架Django和JS框架Vue时用来练手的项目，前端页面从头写，发现很多CSS的基础都忘了，Vue是从0开始。  
 后端的话框架是Django，之前有接触并写过简单的CURD，核心的websocket聊天功能是用channels-redis实现，数据存储这块因为有不少的统计所以用了Mysql。  
-代码还是比较面条式，会不断抽时间修改。  
+代码还是比较面条式，会不断抽时间修改。    
+[DEMO](http://drrr-chat.roblog.top "DEMO")  
 
 ## 功能介绍
 登录:只需要输入昵称和选择头像即可生成用户登录，用户数据保存至Mysql方便统计。  
