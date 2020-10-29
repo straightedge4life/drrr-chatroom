@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 
 let host = window.location.origin.split(':');
-let ws_port = ':8828';
+let ws_port = ':8880';
 if(host.length > 2){
     host.pop()
 }
